@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col mb-3">
+      <label for="firstname" class="form-label">Nombre Zona: </label>
+      <input type="text" class="form-control" placeholder="Ingrese zona..." [ngModel]="nombre_zona" >
+    </div>
+    <div class="col mb-3">
+      <label for="lastname" class="form-label">Descripción: </label>
+      <input type="text" class="form-control" placeholder="Ingrese descripción.." [ngModel]="descripcion" >
+    </div>
+</div>
+
+ <button (click)="agregarZona()" *ngIf="agregar4.id_zona==0"class="btn btn-outline-secondary">
+    Agregar
+</button>
+
+<button (click)="actualizarZona()" *ngIf="agregar4.id_zona!=0" class="btn btn-outline-secondary">
+    Actualizar
+</button> 
+
+
+

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col mb-3">
+      <label for="firstname" class="form-label">Nombre: </label>
+      <input type="text" class="form-control" placeholder="Ingrese nombre..." [ngModel]="nombre" >
+    </div>
+    <div class="col mb-3">
+      <label for="lastname" class="form-label">Descripción: </label>
+      <input type="text" class="form-control" placeholder="Ingrese descripción..." [ngModel]="descripcion" >
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mb-3">
+      <label for="email" class="form-label">Precio: </label>
+      <input type="text" class="form-control" id="email" placeholder="Ingrese correo precio..." [ngModel]="precio" >
+      <div class="form-text"></div>
+    </div>
+  
+    <div class="col mb-3">
+      <label for="mobile" class="form-label">Stock: </label>
+      <input type="text" class="form-control" id="mobile" placeholder="Ingrese número de stock..."
+        [ngModel]="stock" >
+      <div class="form-text"></div>
+    </div>
+    <div class="col mb-3">
+        <label for="mobile" class="form-label">Categoría: </label>
+        <input type="text" class="form-control" id="mobile" placeholder="Ingrese categoría..."
+          [ngModel]="categoria" >
+        <div class="form-text"></div>
+  </div>
+  
+  
+</div>
+
+ <button (click)="agregarProducto()" *ngIf="agregar2.id_producto==0"class="btn btn-outline-secondary">
+    Agregar
+</button>
+
+<button (click)="actualizarProducto()" *ngIf="agregar2.id_producto!=0" class="btn btn-outline-secondary">
+    Actualizar
+</button> 
+
+

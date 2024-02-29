@@ -1,0 +1,64 @@
+  
+  <div class="container-fluid">
+  
+    
+      
+      <br>
+    <div class="table-responsive text-center" > 
+      <label><b> <i class="icon ion-md-paper"></i>Ventas</b></label>
+<table class="table table-sm">
+<thead class="table-dark">
+    <tr>
+      <th>Id Venta</th>
+        <th>Id Cliente</th>
+          <th>Id Vendedor</th>
+          <th>Id Zona</th>
+          <th>Fecha</th>
+          <th>Monto Total</th>
+        
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let dataItem of VentasTotalesList"  >
+      <td>{{dataItem.id_venta}}</td>
+        <td>{{dataItem.id_cliente}}</td>
+        <td>{{dataItem.id_vendedor}}</td>
+        <td>{{dataItem.id_zona}}</td>
+        <td>{{dataItem.fecha}}</td>  
+        <td>{{dataItem.monto_total}}</td>       
+         
+</tbody>
+</table>
+</div>
+
+<br>
+<div class="table-responsive text-center" > 
+  <label><b> <i class="icon ion-md-paper"></i>Detalle de ventas</b></label>
+<table class="table table-sm">
+<thead class="table-dark">
+<tr>
+  <th>Id Venta</th>
+    <th>Id Producto</th>
+      <th>Cantidad</th>
+      <th>precio Unitario</th>
+      <th>Subtotal</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let dataItem of DetalleList"  >
+  <td>{{dataItem.id_venta}}</td>
+    <td>{{dataItem.id_producto}}</td>
+    <td>{{dataItem.cantidad}}</td>
+    <td>{{dataItem.precio_unitario}}</td>
+    <td>{{dataItem.subtotal}}</td>        
+   
+</tbody>
+</table>
+</div>
+
+</div>
+
+
+
+
+

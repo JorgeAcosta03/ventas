@@ -1,0 +1,34 @@
+ <div class="row">
+    <div class="col mb-3">
+      <label for="firstname" class="form-label">Nombre: </label>
+      <input type="text" class="form-control" placeholder="Ingrese nombre..." [ngModel]="nombre" nombre="nombre">
+    </div>
+    <div class="col mb-3">
+      <label for="lastname" class="form-label">Correo Electrónico: </label>
+      <input type="text" class="form-control" placeholder="Ingrese apellido..." [ngModel]="email" email="email">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col mb-3">
+      <label for="email" class="form-label">Dirección: </label>
+      <input type="text" class="form-control" id="email" placeholder="Ingrese correo electrónico..." [ngModel]="direccion" direccion="direccion">
+      <div class="form-text"></div>
+    </div>
+  
+    <div class="col mb-3">
+      <label for="mobile" class="form-label">Número de teléfono: </label>
+      <input type="text" class="form-control" id="mobile" placeholder="Ingrese número de teléfono..."
+        [ngModel]="telefono" telefono="telefono">
+      <div class="form-text"></div>
+    </div>
+  </div>
+
+ <button (click)="agregarCliente()" *ngIf="agregar.id_cliente==0"class="btn btn-outline-secondary">
+    Agregar
+</button>
+
+<button (click)="actualizarCliente()" *ngIf="agregar.id_cliente!=0" class="btn btn-outline-secondary">
+    Actualizar
+</button> 
+
+

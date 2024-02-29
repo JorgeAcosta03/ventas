@@ -1,0 +1,451 @@
+TABLA ZONAS********
+********************
+CREATE OR ALTER PROCEDURE SPSZonas
+AS
+BEGIN
+	SELECT id_zona,nombre_zona,descripcion from Zonas;
+END
+GO
+-----------------------
+
+CREATE OR ALTER PROCEDURE SPIzonas
+	@nombre_zona varchar(50),
+	@descripcion varchar(50)
+AS
+BEGIN
+	insert into Zonas (nombre_zona,descripcion) values(@nombre_zona,@descripcion);
+END
+GO
+------------------------
+
+CREATE OR ALTER PROCEDURE SPUzonas
+	@id_zona int,
+	@nombre_zona varchar(50),
+	@descripcion varchar(50)
+AS
+BEGIN
+	update Zonas set
+	nombre_zona = @nombre_zona,
+	descripcion =@descripcion
+	where id_zona=@id_zona;
+END
+GO
+-------------
+
+CREATE OR ALTER PROCEDURE SPDzonas
+	@id_zona int
+AS
+BEGIN
+	delete from Zonas where id_zona=@id_zona;
+END
+GO
+
+
+TABLA CLIENTES********
+********************
+CREATE OR ALTER PROCEDURE SPSclientes
+AS
+BEGIN
+	SELECT id_cliente,nombre,email,telefono,direccion from Clientes;
+END
+GO
+-----------------------
+
+CREATE OR ALTER PROCEDURE SPIclientes
+	@nombre varchar(60),
+	@email varchar(30),
+	@telefono varchar(12),
+	@direccion varchar(50)
+AS
+BEGIN
+	insert into Clientes(nombre,email,telefono,direccion) values(@nombre,
+	@email,@telefono,@direccion);
+END
+GO
+------------------------
+
+CREATE OR ALTER PROCEDURE SPUclientes
+	@id_cliente int,
+	@nombre varchar(60),
+	@email varchar(30),
+	@telefono varchar(12),
+	@direccion varchar(50)
+AS
+BEGIN
+	update Clientes set
+	nombre = @nombre,
+	email =@email,
+	telefono=@telefono,
+	direccion=@direccion
+	where id_cliente=@id_cliente;
+END
+GO
+-------------
+
+CREATE OR ALTER PROCEDURE SPDclientes
+	@id_cliente int
+AS
+BEGIN
+	delete from Clientes where id_cliente=@id_cliente;
+END
+GO
+
+
+
+TABLA VENDEDORES********
+********************
+CREATE OR ALTER PROCEDURE SPSvendedores
+AS
+BEGIN
+	SELECT id_vendedor,nombre,email,telefono,direccion from Vendedores;
+END
+GO
+-----------------------
+
+CREATE OR ALTER PROCEDURE SPIvendedores
+	@nombre varchar(60),
+	@email varchar(30),
+	@telefono varchar(12),
+	@direccion varchar(50)
+AS
+BEGIN
+	insert into Vendedores(nombre,email,telefono,direccion) values(@nombre,
+	@email,@telefono,@direccion);
+END
+GO
+------------------------
+
+CREATE OR ALTER PROCEDURE SPUvendedores
+	@id_vendedor int,
+	@nombre varchar(60),
+	@email varchar(30),
+	@telefono varchar(12),
+	@direccion varchar(50)
+AS
+BEGIN
+	update Vendedores set
+	nombre = @nombre,
+	email =@email,
+	telefono=@telefono,
+	direccion=@direccion
+	where id_vendedor=@id_vendedor;
+END
+GO
+-------------
+
+CREATE OR ALTER PROCEDURE SPDvendedores
+	@id_vendedor int
+AS
+BEGIN
+	delete from Vendedores where id_vendedor=@id_vendedor;
+END
+GO
+
+
+
+
+TABLA VENTA********
+********************
+CREATE OR ALTER PROCEDURE SPSventas
+AS
+BEGIN
+	SELECT id_venta,id_cliente,id_vendedor,id_zona,fecha,monto_total from Ventas;
+END
+GO
+-----------------------
+
+CREATE OR ALTER PROCEDURE SPIventas
+	@id_cliente int,
+	@id_vendedor int,
+	@id_zona int,
+	@fecha date,
+	@monto_total float
+AS
+BEGIN
+	insert into Ventas(id_cliente,id_vendedor,id_zona,fecha,monto_total) values(@id_cliente,
+	@id_vendedor,@id_zona,@fecha,@monto_total);
+END
+GO
+------------------------
+
+CREATE OR ALTER PROCEDURE SPUventas
+	@id_cliente int,
+	@id_vendedor int,
+	@id_zona int,
+	@fecha date,
+	@monto_total float
+AS
+BEGIN
+	update Ventas set
+	id_cliente = @id_cliente,
+	id_vendedor =@id_vendedor,
+	id_zona=@id_zona,
+	fecha=@fecha,
+	monto_total=@monto_total
+	where id_venta=@id_venta;
+END
+GO
+-------------
+
+CREATE OR ALTER PROCEDURE SPDventas
+	@id_venta int
+AS
+BEGIN
+	delete from Ventas where id_venta=@id_venta ;
+END
+GO
+
+
+
+
+TABLA PRODUCTOS********
+********************
+CREATE OR ALTER PROCEDURE SPSproductos
+AS
+BEGIN
+	SELECT id_producto,nombre,descripcion,precio,stock,categoria from Productos;
+END
+GO
+-----------------------
+
+CREATE OR ALTER PROCEDURE SPIproductos
+	@nombre varchar(30),
+	@descripcion varchar(40),
+	@precio float,
+	@stock int,
+	@categoria varchar(30)
+AS
+BEGIN
+	insert into Productos(nombre,descripcion,precio,stock,categoria) values(@nombre,
+	@descripcion,@precio,@stock,@categoria);
+END
+GO
+------------------------
+
+CREATE OR ALTER PROCEDURE SPUproductos
+	@id_producto int,
+	@nombre varchar(30),
+	@descripcion varchar(40),
+	@precio float,
+	@stock int,
+	@categoria varchar(30)
+AS
+BEGIN
+	update Productos set
+	nombre=@nombre,
+	descripcion=@descripcion,
+	precio=@precio,
+	stock=@stock,
+	categoria=@categoria
+	where id_producto = @id_producto;
+END
+GO
+-------------
+
+CREATE OR ALTER PROCEDURE SPDproductos
+	@id_producto int
+AS
+BEGIN
+	delete from Productos where id_producto=@id_producto;
+END
+GO
+
+  TABLA DETALLE_VENTA********
+********************
+CREATE OR ALTER PROCEDURE SPSdetalles
+AS
+BEGIN
+	SELECT id_venta,id_producto,cantidad,precio_unitario,subtotal from Detalle_Ventas;
+END
+GO
+-----------------------
+
+CREATE OR ALTER PROCEDURE SPIdetalles
+	@id_venta int,
+	@id_producto int,
+	@cantidad int,
+	@precio_unitario float,
+	@subtotal float
+AS
+BEGIN
+	insert into Detalle_Ventas(id_venta,id_producto,cantidad,precio_unitario,subtotal) values(@id_venta,
+	@id_producto,@cantidad,@precio_unitario,@subtotal);
+END
+GO
+------------------------
+
+CREATE OR ALTER PROCEDURE SPUdetalles
+	@id_venta int,
+	@id_producto int,
+	@cantidad int,
+	@precio_unitario float,
+	@subtotal float
+AS
+BEGIN
+	update Detalle_Ventas set
+	id_producto =@id_producto,
+	cantidad=@cantidad,
+	precio_unitario=@precio_unitario,
+	subtotal=@subtotal
+	where id_venta=@id_venta;
+END
+GO
+-------------
+
+CREATE OR ALTER PROCEDURE SPDdetalles
+	@id_venta int
+AS
+BEGIN
+	delete from Detalle_Ventas where id_venta=@id_venta;
+END
+GO
+
+
+
+***********************************
+SUBCONSULTAS 
+***********************************
+--Listado de zonas por cantidad de ventas
+CREATE PROCEDURE SPCantidadZonas
+
+AS
+BEGIN
+	select z.nombre_zona,count(v.id_zona) as cantidad_ventas,v.id_vendedor
+	from Zonas z, Ventas v
+	where z.id_zona = v.id_zona
+	group by v.id_vendedor,z.nombre_zona,v.id_zona
+	order by count(v.id_zona) desc;
+	
+END
+GO
+
+--Zonas sin ventas
+CREATE OR ALTER PROCEDURE SPZonasSinVentas
+	@fecha VARCHAR(12)
+	@fecha2 varchar(12)
+AS
+BEGIN
+
+select z.nombre_zona
+from Zonas z
+where not exists (select id_vendedor
+		from Ventas v
+		where z.id_zona=v.id_zona
+		and v.fecha between @fecha and @fecha2);
+END
+GO
+
+--Vendedores sin ventas
+CREATE PROCEDURE SPVendedorSinVentas
+	@fecha1 date,
+	@fecha2 date
+AS
+BEGIN
+
+select vend.nombre
+from Vendedores vend
+where not exists (select id_vendedor
+		from Ventas v
+		where vend.id_vendedor=v.id_vendedor
+		and v.fecha between @fecha1 and @fecha2);
+END
+GO
+
+--Ventas por cliente
+
+CREATE PROCEDURE SPVentasCliente
+	@fecha1 date,
+	@fecha2 date
+AS
+BEGIN
+select c.id_cliente,c.nombre,z.nombre_zona,count(v.id_venta) as Numero_Ventas,v.fecha
+from Ventas v, Clientes c, Zonas z
+where c.id_cliente=v.id_cliente
+and z.id_zona=v.id_zona
+and v.fecha between @fecha1 and @fecha2
+group by v.id_venta, c.id_cliente, c.nombre,z.nombre_zona,v.fecha;
+	
+END
+GO
+
+
+--------------
+--------------
+--procedimiento para abrir la venta
+
+create or alter procedure SPabrir_factura 
+	@id_cliente int,
+	@id_vendedor int,
+	@id_zona int
+AS
+begin
+insert into Ventas(id_cliente,id_vendedor,id_zona,fecha,monto_total)
+			values(@id_cliente,@id_vendedor,@id_zona,SYSDATETIME(),0);
+
+
+END
+GO
+EXEC SPabrir_factura @id_cliente=1,@id_vendedor=1,@id_zona=1;
+
+--procedimineto para realizar la venta
+create or alter procedure SPsumar_Detalle (@id_producto int,@cantidad int,@id_venta int)
+
+as
+begin
+declare @subtotal float
+ declare  @res int
+ declare  @tot int
+ declare  @t int
+ declare  @error varchar
+ declare  @unidades int
+ declare  @pre float
+ declare  @pre1 float
+
+set @unidades =(select stock
+from Productos
+where id_producto=@id_producto);
+
+set @pre=(select precio 
+from Productos
+where id_producto=@id_producto);
+
+if @unidades>0 begin
+insert into Detalle_Ventas(id_venta,id_producto,cantidad,precio_unitario,subtotal)
+			values(@id_venta,@id_producto,@cantidad ,@pre,0);
+
+set @pre1=(select precio 
+from Productos
+where id_producto=@id_producto);
+
+set @subtotal=@cantidad*@pre1;
+
+set @tot=(select monto_total 
+from Ventas
+where id_venta=@id_venta);
+
+
+
+--set @t=@tot+@subtotal;
+
+update Detalle_Ventas
+set subtotal=@subtotal
+where id_venta=@id_venta;
+
+update Ventas
+set monto_total=@tot+@subtotal
+where id_venta=@id_venta;
+
+set @res=@unidades-@cantidad;
+
+
+update productos
+set stock=@res
+where id_producto=@id_producto;
+
+END 
+END
+
+GO
+
+
+exec SPsumar_Detalle @cod_pro_ven=2,@cantidad=3, @id_venta=17;
